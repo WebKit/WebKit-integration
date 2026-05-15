@@ -2079,7 +2079,11 @@ angle::Result TextureMtl::redefineImage(const gl::Context *context,
     {
         // mNativeTextureStorage stores the complete mipmap chain when present.
         ASSERT(mNativeTextureStorage->textureType() == mtl::GetTextureType(index.getType()));
+<<<<<<< HEAD
         if (mNativeTextureStorage->getFormat() == mtlFormat && size == mNativeTextureStorage->size(glLevel))
+=======
+        if (mFormat == mtlFormat && size == mNativeTextureStorage->size(glLevel))
+>>>>>>> 0391090cef9a (ANGLE: Fix crash from stale texture views during size transitions)
         {
             return angle::Result::Continue;
         }
@@ -2091,6 +2095,12 @@ angle::Result TextureMtl::redefineImage(const gl::Context *context,
     // The detached view might be not match format or size, currently we do not reuse these.
     imageDef = {};
 
+<<<<<<< HEAD
+=======
+    // Cache last defined image format:
+    mFormat = mtlFormat;
+
+>>>>>>> 0391090cef9a (ANGLE: Fix crash from stale texture views during size transitions)
     ContextMtl *contextMtl = mtl::GetImpl(context);
     // Tell context to rebind textures
     contextMtl->invalidateCurrentTextures();
@@ -2102,10 +2112,16 @@ angle::Result TextureMtl::redefineImage(const gl::Context *context,
     }
 
     mtl::TextureRef image;
+<<<<<<< HEAD
     bool allowFormatView =
         mtlFormat.hasDepthAndStencilBits() ||
         needsFormatViewForPixelLocalStorage(
             contextMtl->getDisplay()->getNativePixelLocalStorageOptions(), mtlFormat);
+=======
+    bool allowFormatView = mtlFormat.hasDepthAndStencilBits() ||
+                            needsFormatViewForPixelLocalStorage(
+                                contextMtl->getDisplay()->getNativePixelLocalStorageOptions());
+>>>>>>> 0391090cef9a (ANGLE: Fix crash from stale texture views during size transitions)
     // Create image to hold texture's data at this level & slice:
     switch (index.getType())
     {

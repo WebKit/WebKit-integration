@@ -2470,6 +2470,7 @@ TEST_P(MipmapTestES31, GenerateLowerMipsWithDraw)
     }
 }
 
+<<<<<<< HEAD
 // Test glGenerateMipmap in the presence of mismatching level formats.  Regression test for a bug in
 // mesa.
 TEST_P(MipmapTestES3, MismatchingLevelFormats)
@@ -2529,6 +2530,8 @@ TEST_P(MipmapTestES3, MismatchingLevelFormats)
     drawQuad(verify, essl3_shaders::PositionAttrib(), 0.5f);
     EXPECT_PIXEL_COLOR_EQ(0, 0, GLColor::green);
 
+=======
+>>>>>>> 0391090cef9a (ANGLE: Fix crash from stale texture views during size transitions)
 // Verifies texture uploads work correctly after size transitions that change mipmap dimensions.
 TEST_P(MipmapTest, UploadAfterSizeTransition)
 {
